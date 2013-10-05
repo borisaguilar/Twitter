@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sql>
+    <name>Ionize Twitter Module Database Creation</name>
+    <version>0.1</version>
+    <license>Open Source MIT license</license>
+ 
+    <!--
+    Module's tables
+    Prefixed by module_<module name> to avoid collision
+      -->
+    <tables>
+ 
+        <!--
+            User table
+            One User has an access_token, his secret, consumer_key and consumer_secret; 
+            also has updated some time ago and has a list of tweets
+        -->
+        <query>
+            CREATE TABLE IF NOT EXISTS module_twitter_user (
+                id_user INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+                accesstoken VARCHAR(255) NOT NULL,
+                accesstokensecret VARCHAR(255) NOT NULL,
+                consumerkey VARCHAR(255) NOT NULL,
+                consumersecret VARCHAR(255) NOT NULL,
+                lastupdate DATETIME NULL,
+                max_time_difference INT(5) NOT NULL,
+                PRIMARY KEY (id_user)
+            )
+            ENGINE = InnoDB
+            AUTO_INCREMENT = 1
+            DEFAULT CHARACTER SET = utf8
+            COLLATE = utf8_unicode_ci;
+        </query>
+ 
+        <!--
+            Tweets Table
+            Tweets table has tweets associated to a user
+        -->
+        <query>
+            CREATE TABLE IF NOT EXISTS module_twitter_tweets (
+                id_user INT UNSIGNED NOT NULL,
+                id_tweet VARCHAR(255) NOT NULL,
+                screen_name VARCHAR(255) NOT NULL,
+                userurl VARCHAR(255) NOT NULL,
+                text VARCHAR(260),
+                PRIMARY KEY (id_user,id_tweet)
+            )
+            ENGINE = InnoDB
+            DEFAULT CHARACTER SET = utf8
+            COLLATE = utf8_unicode_ci;
+        </query>
+
+    </tables>
+ 
+    <!--
+        Content inserted at module's installation
+    -->
+    <content>
+ 
+        <query>
+            INSERT IGNORE INTO module_twitter_user (id_user,accesstoken, accesstokensecret, consumerkey, consumersecret, lastupdate, max_time_difference)
+            VALUES
+                (1, '56603624-Qkym4q21INZ4ZA0PBVUUxSC3Y5RzpeQoMQOtyf4F0', 
+                'UahodBFyVvJXV4RyxuPXwzybfGs8H6ILUAfKqxhpy3Q', 
+                'h4uWeSN9KrZ9vOpsHjwPA', 
+                'dczEA6SopYfz838pfzvKPsbctftY1CCZNSgoa6qYFw',
+                null,
+                5);
+        </query>
+
+    </content>
+</sql>
