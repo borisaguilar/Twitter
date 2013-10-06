@@ -47,22 +47,22 @@ class Twitter extends My_Controller
 
 			if ($needs_update){
 				/*Curl is -REQUIRED- by twitteroauth*/
-				require_once('twitteroauth-master/twitteroauth/twitteroauth.php');
+				//require_once('twitteroauth-master/twitteroauth/twitteroauth.php');
 
 				/* Get user access tokens out of the session. */
-				$access_token = '56603624-Qkym4q21INZ4ZA0PBVUUxSC3Y5RzpeQoMQOtyf4F0';
-				$access_token_secret = 'UahodBFyVvJXV4RyxuPXwzybfGs8H6ILUAfKqxhpy3Q';
-				$consumer_key = 'h4uWeSN9KrZ9vOpsHjwPA';
-				$consumer_secret = 'dczEA6SopYfz838pfzvKPsbctftY1CCZNSgoa6qYFw';
+				//$access_token = '';
+				//$access_token_secret = '';
+				//$consumer_key = '';
+				//$consumer_secret = '';
 
 				/* Create a TwitterOauth object with consumer/user tokens. */
-				$connection = new TwitterOAuth($consumer_key, $consumer_secret, $access_token, $access_token_secret);
+				//$connection = new TwitterOAuth($consumer_key, $consumer_secret, $access_token, $access_token_secret);
 
 				/* If method is set change API call made. Test is called by default. */
-				$content = $connection->get('statuses/user_timeline');
+				//$content = $connection->get('statuses/user_timeline');
 
 				/*save tweets in model*/
-				$this->twitter_user_model->update_user($user['id_user'], $content);
+				//$this->twitter_user_model->update_user($user['id_user'], $content);
 			}
 		}
 		/* Display user's data */
