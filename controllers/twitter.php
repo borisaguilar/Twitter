@@ -17,16 +17,14 @@ class Twitter extends My_Controller
     	/* En esta versión solo retornamos json*/
     	/* para cada usuario! */
 		$users =  $this->twitter_user_model->get_list();
-		$last_user_id = null;
 		foreach ($users as $user){
-			$last_user_id = $user['user_id'];
 			/* De la bdd obtenemos el "ultima_actualizacion*/
 			$lastupdate = $user['lastupdate'];
 			/*No last update*/
 			$needs_update = false;
 			if ($lastupdate != null){
 				/*Calculamos el delta de actualizacion*/
-				$timedifference = time() - strtotime($lastupdate);
+				$timedifference = time() - $lastupdate;
 				$max_time_difference = $user['max_time_difference'];
 				/* Si ambas difieren por mas de el valor de "actualización" */
 				if ($timedifference > $max_time_difference){
@@ -64,16 +62,15 @@ class Twitter extends My_Controller
 				$content = $connection->get('statuses/user_timeline');
 
 				/*save tweets in model*/
-				$this->twitter_user_model->update_user($user['user_id'], $content);
+				$this->twitter_user_model->update_user($user['id_user'], $content);
 			}
-			break;
 		}
-		if ($last_user_id != null){
-			/* Display user's data */
-			$content = $this->twitter_user_model->get($last_user_id);
-			$this->template['title'] = $content;
-			$this->output('twitter');
-			
-		}
+		/* Display user's data */
+		$conds = array(
+        	'order_by' => 'id_tweet DESC'
+    	);
+		$content = $this->tweets_model->get_list($conds);
+		$this->template['data'] = json_encode($content);
+		$this->output('twitter');
     }
 }

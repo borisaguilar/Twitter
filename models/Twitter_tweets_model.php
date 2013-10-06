@@ -20,7 +20,4 @@ class Twitter_tweets_model extends Base_model
  
         parent::__construct();
     }
-    public function update_user($id, $tweets){
-
-    }
 }

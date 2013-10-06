@@ -16,7 +16,7 @@
 <script type="text/javascript">
  
     // Init the panel toolbox is mandatory
-    ION.initToolbox('empty_toolbox');
+    ION.initModuleToolbox('twitter','twitter_toolbox');
     // Update the authors list
     ION.HTML(
             'module/twitter/user/get_list',      // URL to the controller

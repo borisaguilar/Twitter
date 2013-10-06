@@ -18,11 +18,12 @@
         <query>
             CREATE TABLE IF NOT EXISTS module_twitter_user (
                 id_user INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+                username VARCHAR(255) NOT NULL,
                 accesstoken VARCHAR(255) NOT NULL,
                 accesstokensecret VARCHAR(255) NOT NULL,
                 consumerkey VARCHAR(255) NOT NULL,
                 consumersecret VARCHAR(255) NOT NULL,
-                lastupdate DATETIME NULL,
+                lastupdate INT(10) NULL,
                 max_time_difference INT(5) NOT NULL,
                 PRIMARY KEY (id_user)
             )
@@ -41,7 +42,7 @@
                 id_user INT UNSIGNED NOT NULL,
                 id_tweet VARCHAR(255) NOT NULL,
                 screen_name VARCHAR(255) NOT NULL,
-                userurl VARCHAR(255) NOT NULL,
+                userurl VARCHAR(255) NULL,
                 text VARCHAR(260),
                 PRIMARY KEY (id_user,id_tweet)
             )
@@ -51,22 +52,4 @@
         </query>
 
     </tables>
- 
-    <!--
-        Content inserted at module's installation
-    -->
-    <content>
- 
-        <query>
-            INSERT IGNORE INTO module_twitter_user (id_user,accesstoken, accesstokensecret, consumerkey, consumersecret, lastupdate, max_time_difference)
-            VALUES
-                (1, '56603624-Qkym4q21INZ4ZA0PBVUUxSC3Y5RzpeQoMQOtyf4F0', 
-                'UahodBFyVvJXV4RyxuPXwzybfGs8H6ILUAfKqxhpy3Q', 
-                'h4uWeSN9KrZ9vOpsHjwPA', 
-                'dczEA6SopYfz838pfzvKPsbctftY1CCZNSgoa6qYFw',
-                null,
-                5);
-        </query>
-
-    </content>
 </sql>

@@ -1,3 +1,1 @@
-<pre>
-<?php print_r( $title );?>
-</pre>
+<?php print_r( $data );?>
