@@ -33,10 +33,10 @@ Currently tweets are cached by a time-frame interval defined in module configura
 ```
 * ion:twitter:tweets accepts the optional parameter max, it tells how much tweets to load, any number above 20 will just load the last 20 tweets cached.
 * ion:twitter:tweets:tweet has the "field" parameter; possible values are:
-** screen_name: displays the twitter account name.
-** text: displays the tweet's content.
-** userurl: if the user has a url in his profile this parameter shows it up.
-** id_tweet: displays twitter's internal id.
+   * screen_name: displays the twitter account name.
+   * text: displays the tweet's content.
+   * userurl: if the user has a url in his profile this parameter shows it up.
+   * id_tweet: displays twitter's internal id.
 
 ### Credits
 * Twitter module for Ionize CMS written by [Boris Aramis Aguilar R.](http://borisaguilar.com).
