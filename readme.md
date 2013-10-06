@@ -25,12 +25,12 @@ Currently tweets are cached by a time-frame interval defined in module configura
   
 
 ### Tags available for usage in views && example usage
-
+```
 <ion:twitter:tweets max="4">
 <a href="http://twitter.com/<ion:tweet field="screen_name" />">@<ion:tweet field="screen_name" /></a>
 <ion:tweet field="text" />
 </ion:twitter:tweets>
-
+```
 * ion:twitter:tweets accepts the optional parameter max, it tells how much tweets to load, any number above 20 will just load the last 20 tweets cached.
 * ion:twitter:tweets:tweet has the "field" parameter; possible values are:
 ** screen_name: displays the twitter account name.
