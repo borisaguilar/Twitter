@@ -23,9 +23,8 @@ class User extends Module_Admin
      */
     public function get_list()
     {
-        $conds = array();
  
-        $this->template['usersx'] = $this->twitter_user_model->get_list($conds);
+        $this->template['usersx'] = $this->twitter_user_model->get_list();
  
         $this->output('admin/user_list');
     }
