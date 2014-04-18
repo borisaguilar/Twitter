@@ -138,7 +138,14 @@ class Twitter_Tags extends TagManager
  
             if ( ! empty($tweet[$field]))
             {
-                return self::output_value($tag, $tweet[$field]);
+                $text = self::output_value($tag, $tweet[$field]);
+                $text = ereg_replace("www\.", "http://www.", $text);
+                $text = ereg_replace("http://http://www\.", "http://www.", $text);
+                $text = ereg_replace("https://http://www\.", "https://www.", $text);
+                $exUrl = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
+                preg_match_all($exUrl, $text, $url);
+                foreach($url[0] as $k=>$v) $text = str_replace($url[0][$k], '<a href="'.$url[0][$k].'" target="_blank" rel="nofollow">'.$url[0][$k].'</a>', $text);
+                return $text;
             }
  
             // Here we have the choice :
