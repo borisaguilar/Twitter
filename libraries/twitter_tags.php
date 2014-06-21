@@ -123,7 +123,7 @@ class Twitter_Tags extends TagManager
      * @return    String      Tag attribute or ''
      *
      * @usage    <ion:twitter:tweets>
-     *        <ion:tweet field="id_user|id_tweet|screen_name|userurl|text" />
+     *        <ion:tweet field="id_user|id_tweet|screen_name|userurl|created_at|text" />
      *       </ion:twitter:tweets>
      *
      */
@@ -141,14 +141,42 @@ class Twitter_Tags extends TagManager
                 $text = self::output_value($tag, $tweet[$field]);
                 
                 if ($field == 'text') {
-                    $text = preg_replace("%www\.%", "http://www.", $text);
-                    $text = preg_replace("%http://http://www\.%", "http://www.", $text);
-                    $text = preg_replace("%https://http://www\.%", "https://www.", $text);
-                    $exUrl = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
-                    preg_match_all($exUrl, $text, $url);
-                    foreach($url[0] as $k=>$v) $text = str_replace($url[0][$k], '<a href="'.$url[0][$k].'" target="_blank" rel="nofollow">'.$url[0][$k].'</a>', $text);
+                    $text = preg_replace('/(https?:\/\/[^\s"<>]+)/','<a href="$1" target="_blank" rel="nofollow">$1</a>', $text);
+                    $text = preg_replace('/(^|[\n\s])@([^\s"\t\n\r<:]*)/is', '$1<a href="http://twitter.com/$2" target="_blank" rel="nofollow">@$2</a>', $text);
+                    $text = preg_replace('/(^|[\n\s])#([^\s"\t\n\r<:]*)/is', '$1<a href="http://twitter.com/search?q=%23$2" target="_blank" rel="nofollow">#$2</a>', $text);
+                } 
+
+                if ($field == 'created_at') {
+                    $format = $tag->getAttribute('format');
+                    $d = time()-strtotime($text);
+                    $t = array(
+                        'year'=>31556926,
+                        'month'=>2629744,
+                        'week'=>604800,
+                        'day'=>86400,
+                        'hour'=>3600,
+                        'minute'=>60,
+                        'second'=>1
+                    );
+
+                    if ($format == 'short' || $format == 'medium' || $format == 'long' || $format == 'complete') {
+                        $text = date(lang('dateformat_'.$format), strtotime($text));
+                        // TODO >> This value is not being translated. Should behave like <ion:date format="complete" />
+                    }
+                    else {
+                        // Simple function to get "time ago"
+                        $text=lang('module_twitter_now');
+
+                        foreach($t as $u=>$s){
+                            if($s<=$d){
+                                $v=floor($d/$s);
+                                $text=lang('module_twitter_about_time').$v.' '.lang('module_twitter_'.$u.($v==1?'':'s')).lang('module_twitter_ago');
+                                break;
+                            }
+                        }
+                    }
                 }
-                
+
                 return $text;
             }
  

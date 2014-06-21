@@ -15,7 +15,7 @@
             admin_url + 'module/twitter/user/create',
             {
                'width':350,
-               'height':250
+               'height':220
             }
         );
     });

@@ -33,6 +33,7 @@ class Twitter_user_model extends Base_model
                 'id_tweet' => $tweet->id_str,
                 'screen_name' => $tweet->user->screen_name,
                 'userurl' => $tweet->user->url,
+                'created_at' => $tweet->created_at,
                 'text' => $tweet->text
             );
             $this->{$this->db_group}->insert($this->_tweets_table, $data);
