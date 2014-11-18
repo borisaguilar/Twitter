@@ -11,7 +11,7 @@
     <!-- username -->
     <dl class="small">
         <dt>
-            <label for="username<?php echo $id ?>"><?php echo lang('ionize_module_twitter_label_username')?></label>
+            <label for="username<?php echo $id ?>"><?php echo lang('module_twitter_label_username')?></label>
         </dt>
         <dd>
             <!--
@@ -26,7 +26,7 @@
     <!-- accesstoken -->
     <dl class="small">
         <dt>
-            <label for="accesstoken<?php echo $id ?>"><?php echo lang('ionize_module_twitter_label_accesstoken')?></label>
+            <label for="accesstoken<?php echo $id ?>"><?php echo lang('module_twitter_label_accesstoken')?></label>
         </dt>
         <dd>
             <input id="accesstoken<?php echo $id ?>" name="accesstoken" class="inputtext required" type="text" value="<?php echo $accesstoken ?>" data-validators="required"/>
@@ -36,7 +36,7 @@
     <!-- accesstokensecret -->
     <dl class="small">
         <dt>
-            <label for="accesstokensecret<?php echo $id ?>"><?php echo lang('ionize_module_twitter_label_accesstokensecret')?></label>
+            <label for="accesstokensecret<?php echo $id ?>"><?php echo lang('module_twitter_label_accesstokensecret')?></label>
         </dt>
         <dd>
             <input id="accesstokensecret<?php echo $id ?>" name="accesstokensecret" class="inputtext required" type="text" value="<?php echo $accesstokensecret ?>" data-validators="required"/>
@@ -46,7 +46,7 @@
     <!-- consumerkey -->
     <dl class="small">
         <dt>
-            <label for="consumerkey<?php echo $id ?>"><?php echo lang('ionize_module_twitter_label_consumerkey')?></label>
+            <label for="consumerkey<?php echo $id ?>"><?php echo lang('module_twitter_label_consumerkey')?></label>
         </dt>
         <dd>
             <input id="consumerkey<?php echo $id ?>" name="consumerkey" class="inputtext required" type="text" value="<?php echo $consumerkey ?>" data-validators="required"/>
@@ -56,7 +56,7 @@
     <!-- consumersecret -->
     <dl class="small">
         <dt>
-            <label for="consumersecret<?php echo $id ?>"><?php echo lang('ionize_module_twitter_label_consumersecret')?></label>
+            <label for="consumersecret<?php echo $id ?>"><?php echo lang('module_twitter_label_consumersecret')?></label>
         </dt>
         <dd>
             <input id="consumersecret<?php echo $id ?>" name="consumersecret" class="inputtext required" type="text" value="<?php echo $consumersecret ?>" data-validators="required"/>
@@ -66,7 +66,7 @@
     <!-- max_time_difference -->
     <dl class="small">
         <dt>
-            <label for="max_time_difference<?php echo $id ?>"><?php echo lang('ionize_module_twitter_label_max_time_difference')?></label>
+            <label for="max_time_difference<?php echo $id ?>"><?php echo lang('module_twitter_label_max_time_difference')?></label>
         </dt>
         <dd>
             <input id="max_time_difference<?php echo $id ?>" name="max_time_difference" class="inputtext required" type="text" value="<?php echo $max_time_difference ?>" data-validators="validate-integer required"/>

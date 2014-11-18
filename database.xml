@@ -42,6 +42,7 @@
                 id_user INT UNSIGNED NOT NULL,
                 id_tweet VARCHAR(255) NOT NULL,
                 screen_name VARCHAR(255) NOT NULL,
+                created_at VARCHAR(255) NOT NULL,
                 userurl VARCHAR(255) NULL,
                 text VARCHAR(260),
                 PRIMARY KEY (id_user,id_tweet)

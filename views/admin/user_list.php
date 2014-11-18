@@ -37,7 +37,7 @@
                     'module/twitter/user/get/' + id, // URL of the controller
                     {
                         'width':350,
-                        'height':200
+                        'height':220
                     }
             );
         });
