@@ -38,6 +38,13 @@ Currently tweets are cached by a time-frame interval defined in module configura
    * userurl: if the user has a url in his profile this parameter shows it up.
    * id_tweet: displays twitter's internal id.
 
+### Updated feature on dates
+
+Now the tweet text create links from hashtags, mentions, urls.
+Added new field that parse the tweet time to get Twitter style "time ago". 
+
+    <ion:tweet field="created_at" />
+
 ### Credits
 * Twitter module for Ionize CMS written by [Boris Aramis Aguilar R.](http://borisaguilar.com).
 * The twitter interal OAuth library being used is: PHP TwitterOAuth by [Abraham Williams](https://twitter.com/abraham).
